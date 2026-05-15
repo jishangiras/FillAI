@@ -1,6 +1,6 @@
-# FillAI 0.1.2
+# FillAI 0.1.3
 
-FillAI is a privacy-first browser extension that fills forms from pasted or spoken natural language.
+FillAI is a privacy-first browser extension that fills forms from pasted or spoken natural language. This patch refreshes the launch screenshots and release packages.
 
 ## Highlights
 
@@ -16,8 +16,7 @@ FillAI is a privacy-first browser extension that fills forms from pasted or spok
 ## Screenshots
 
 - Input panel: `public/screenshots/fillai-input.png`
-- Review panel: `public/screenshots/fillai-review.png`
-- Defaults/settings: `public/screenshots/fillai-settings.png`
+- Review and approve bar: `public/screenshots/fillai-review.png`
 
 ## Assets
 

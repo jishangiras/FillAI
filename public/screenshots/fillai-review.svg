@@ -1,24 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" width="1280" height="820">
-    <defs>
-      <linearGradient id="pageBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eef6ff"/><stop offset="1" stop-color="#f8fafc"/></linearGradient>
-      <linearGradient id="logoBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse"><stop stop-color="#0C4A8A"/><stop offset="1" stop-color="#0F766E"/></linearGradient>
-      <linearGradient id="logoAccent" x1="79" y1="68" x2="112" y2="96" gradientUnits="userSpaceOnUse"><stop stop-color="#7DD3FC"/><stop offset="1" stop-color="#A7F3D0"/></linearGradient>
-      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#0f1e32" flood-opacity=".18"/></filter>
-      <style>
-        .label{font:700 22px Inter,system-ui,sans-serif;fill:#111827}.small{font:500 17px Inter,system-ui,sans-serif;fill:#6b7280}.tiny{font:700 14px Inter,system-ui,sans-serif;fill:#64748b}.input{fill:#fff;stroke:#cbd5e1;stroke-width:2}.btn{fill:#0c4a8a}.btnText{font:800 17px Inter,system-ui,sans-serif;fill:white}.muted{fill:#f8fafc}.field{font:650 17px Inter,system-ui,sans-serif;fill:#1f2937}.value{font:500 17px Inter,system-ui,sans-serif;fill:#111827}
-      </style>
-    </defs>
-    <rect width="1280" height="820" fill="url(#pageBg)"/>
-    <rect x="120" y="82" width="1040" height="656" rx="24" fill="#fff" filter="url(#shadow)" stroke="#d8e2ed"/>
-    <rect x="120" y="82" width="1040" height="82" rx="24" fill="#f8fafc"/><path d="M120 140h1040" stroke="#e8edf3"/>
-    <g transform="translate(36 34) scale(.32)"><rect width="128" height="128" rx="28" fill="url(#logoBg)"/><path d="M34 38h42c9 0 16 7 16 16v4H34V38Z" fill="#fff"/><path d="M34 68h46c8 0 15 6 16 14H34V68Z" fill="#E0F2FE"/><path d="M34 92h28c8 0 14 6 14 14H34V92Z" fill="#fff"/><path d="m79 86 10 10 23-28" stroke="url(#logoAccent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M92 25 96 36l11 4-11 4-4 11-4-11-11-4 11-4 4-11Z" fill="#A7F3D0"/></g>
-    <text x="88" y="76" class="label" transform="translate(120 82)">FillAI</text>
-    <rect x="238" y="112" width="128" height="30" rx="15" fill="#dcfce7" stroke="#86efac"/><text x="258" y="133" class="tiny" fill="#15803d">ON-DEVICE</text>
-    <text x="850" y="135" class="small">Settings</text><text x="1038" y="135" class="small">Close</text>
-    <text x="160" y="210" class="label">Review before filling</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1074" height="848" viewBox="0 0 1074 848">
+    <rect width="1074" height="848" fill="#f3f6f9"/>
+    <text x="226" y="75" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800" fill="#172230" text-anchor="start">FillAI Test Form</text>
+    <text x="226" y="113" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#172230" text-anchor="start">Use this page to test the extension without touching a real checkout or account form.</text>
+    <rect x="226" y="133" width="623" height="552" rx="5" fill="#fff" stroke="#c7d2df"/>
     
-  <circle cx="178" cy="272" r="6" fill="#2e7d32"/><text x="196" y="279" class="field">First name</text><rect x="460" y="250" width="520" height="44" rx="9" class="input"/><text x="480" y="279" class="value">Priya</text><circle cx="178" cy="334" r="6" fill="#2e7d32"/><text x="196" y="341" class="field">Last name</text><rect x="460" y="312" width="520" height="44" rx="9" class="input"/><text x="480" y="341" class="value">Shah</text><circle cx="178" cy="396" r="6" fill="#2e7d32"/><text x="196" y="403" class="field">Email</text><rect x="460" y="374" width="520" height="44" rx="9" class="input"/><text x="480" y="403" class="value">priya@example.com</text><circle cx="178" cy="458" r="6" fill="#c47f00"/><text x="196" y="465" class="field">Phone</text><rect x="460" y="436" width="520" height="44" rx="9" class="input"/><text x="480" y="465" class="value">416-555-0199</text><circle cx="178" cy="520" r="6" fill="#2e7d32"/><text x="196" y="527" class="field">Street address</text><rect x="460" y="498" width="520" height="44" rx="9" class="input"/><text x="480" y="527" class="value">200 Bay Street</text><circle cx="178" cy="582" r="6" fill="#c47f00"/><text x="196" y="589" class="field">Postal code</text><rect x="460" y="560" width="520" height="44" rx="9" class="input"/><text x="480" y="589" class="value">M5J 2J2</text>
-  <text x="160" y="664" class="small">Green and amber dots show confidence. Edit anything before approving.</text>
-
-    <rect x="160" y="690" width="160" height="52" rx="12" fill="#fff" stroke="#cbd5e1"/><text x="204" y="723" class="field">Edit</text><rect x="824" y="690" width="296" height="52" rx="12" class="btn"/><text x="890" y="723" class="btnText">Approve &amp; Fill</text>
+  
+    <text x="242" y="166" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">First name</text>
+    <rect x="242" y="175" width="292" height="36" rx="4" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+    <text x="254" y="199" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#0b1220" text-anchor="start">Priya</text>
+    
+  
+  
+    <text x="541" y="166" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Last name</text>
+    <rect x="541" y="175" width="292" height="36" rx="4" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+    <text x="553" y="199" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#0b1220" text-anchor="start">Shah</text>
+    
+  
+  
+    <text x="242" y="237" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Email</text>
+    <rect x="242" y="246" width="292" height="36" rx="4" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+    <text x="254" y="270" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#0b1220" text-anchor="start">priya@example.com</text>
+    
+  
+  
+    <text x="541" y="237" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Phone</text>
+    <rect x="541" y="246" width="292" height="36" rx="4" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+    <text x="553" y="270" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#0b1220" text-anchor="start">416-555-0199</text>
+    
+  
+  
+    <text x="242" y="308" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Street address</text>
+    <rect x="242" y="317" width="288" height="36" rx="4" fill="#fff" stroke="#aebed0" stroke-width="1"/>
+    
+    
+  
+  
+    <text x="541" y="308" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">City</text>
+    <rect x="541" y="317" width="288" height="36" rx="4" fill="#fff" stroke="#aebed0" stroke-width="1"/>
+    
+    
+  
+  
+    <text x="242" y="379" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Province/State</text>
+    <rect x="242" y="388" width="288" height="36" rx="4" fill="#fff" stroke="#aebed0" stroke-width="1"/>
+    
+    
+  
+  
+    <text x="541" y="379" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Postal/ZIP code</text>
+    <rect x="541" y="388" width="292" height="36" rx="4" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+    <text x="553" y="412" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#0b1220" text-anchor="start">M5J 2J2</text>
+    
+  
+  
+    <text x="242" y="450" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Country</text>
+    <rect x="242" y="459" width="292" height="36" rx="4" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+    <text x="254" y="483" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#0b1220" text-anchor="start">Canada</text>
+    <text x="516" y="483" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#111827" text-anchor="middle">⌄</text>
+  
+  
+    <text x="541" y="450" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Company</text>
+    <rect x="541" y="459" width="288" height="36" rx="4" fill="#fff" stroke="#aebed0" stroke-width="1"/>
+    
+    
+  
+  <text x="242" y="524" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#172230" text-anchor="start">Notes</text>
+  <rect x="242" y="533" width="587" height="91" rx="4" fill="#fff" stroke="#aebed0"/>
+  <rect x="245" y="638" width="86" height="28" rx="5" fill="#0d3f73"/>
+  <text x="288" y="657" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">Fake Submit</text>
+    
+  <defs><filter id="barShadow" x="-5%" y="-80%" width="110%" height="220%"><feDropShadow dx="0" dy="-8" stdDeviation="16" flood-color="#0f172a" flood-opacity=".22"/></filter></defs>
+  <g filter="url(#barShadow)">
+    <rect x="0" y="804" width="1074" height="44" fill="#0f2033"/>
+    <text x="28" y="833" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="9" font-weight="800" fill="#96a5b8" text-anchor="start">FILLAI</text>
+    <text x="88" y="834" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="12" font-weight="800" fill="#20d46b" text-anchor="start">✓ 6 fields filled</text>
+    <text x="160" y="834" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="10" font-weight="500" fill="#7d8da1" text-anchor="start">Quick match · review carefully</text>
+    <rect x="861" y="817" width="90" height="28" rx="6" fill="#1b2d43" stroke="#526176"/>
+    <text x="906" y="836" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">✎  Edit text</text>
+    <rect x="957" y="817" width="104" height="28" rx="6" fill="#16a34a"/>
+    <text x="1009" y="836" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">✓  Approve all</text>
+  </g>
   </svg>

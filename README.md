@@ -23,13 +23,9 @@ Everything is designed around one idea: **your form data should stay on your dev
 
 ![FillAI input panel](public/screenshots/fillai-input.png)
 
-### Review Before Fill
+### Review And Approve
 
-![FillAI review panel](public/screenshots/fillai-review.png)
-
-### Local Defaults
-
-![FillAI settings panel](public/screenshots/fillai-settings.png)
+![FillAI review bar](public/screenshots/fillai-review.png)
 
 ## Privacy
 
