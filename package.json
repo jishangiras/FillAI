@@ -1,6 +1,6 @@
 {
   "name": "fillai-extension",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "description": "FillAI local browser extension for privacy-preserving form filling.",
   "type": "module",

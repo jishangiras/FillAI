@@ -4,7 +4,9 @@ FillAI is a privacy-first browser extension that fills forms from plain English.
 
 Everything is designed around one idea: **your form data should stay on your device**.
 
-![FillAI logo](public/icons/fillai-icon.svg)
+<p>
+  <img src="public/icons/fillai-icon.svg" alt="FillAI logo" width="88" height="88">
+</p>
 
 ## What It Does
 
@@ -21,11 +23,11 @@ Everything is designed around one idea: **your form data should stay on your dev
 
 ### Write Or Speak Once
 
-![FillAI input panel](public/screenshots/fillai-input.png)
+![FillAI input panel](public/screenshots/fillai-panel-launch.png)
 
 ### Review And Approve
 
-![FillAI review bar](public/screenshots/fillai-review.png)
+![FillAI review bar](public/screenshots/fillai-approve-review.png)
 
 ## Privacy
 
