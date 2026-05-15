@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FillAI</title>
+    <script type="module" src="/src/popup.ts"></script>
+  </head>
+  <body>
+    <main class="popup">
+      <header>
+        <h1><img src="/icons/icon-32.png" alt="" /> FillAI</h1>
+        <span id="status" class="status">Ready</span>
+      </header>
+      <label>
+        <span>Text to map</span>
+        <textarea id="rawInput" rows="7" placeholder="Paste notes or dictate into this field."></textarea>
+      </label>
+      <div class="voice-row">
+        <button id="speakInput" type="button">Speak</button>
+        <button id="clearInput" type="button">Clear</button>
+      </div>
+      <div class="actions">
+        <button id="openPanel" class="primary" type="button">Review on Page</button>
+        <button id="savePrefs" type="button">Save Settings</button>
+      </div>
+      <section>
+        <label>
+          <span>Model</span>
+          <input id="modelId" />
+        </label>
+        <label class="check">
+          <input id="preferWebGpu" type="checkbox" />
+          <span>Prefer WebGPU</span>
+        </label>
+      </section>
+      <section>
+        <h2>Profile Hints</h2>
+        <div class="profile-grid">
+          <input id="profileName" placeholder="Full name" />
+          <input id="profileEmail" placeholder="Email" />
+          <input id="profilePhone" placeholder="Phone" />
+          <input id="profileAddress" placeholder="Address" />
+        </div>
+      </section>
+      <div class="donate">
+        FillAI is free &amp; open source &hearts;<br>
+        <a href="https://donate.stripe.com/9B65kD1fw7tA0WQarY2sM02" target="_blank">Support development</a>
+      </div>
+    </main>
+  </body>
+</html>

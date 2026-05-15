@@ -1,0 +1,824 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ── FAB ─────────────────────────────────────────────────────────────── */
+
+.fillai-stale-banner {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  background: #1e293b;
+  color: #f1f5f9;
+  font: 13px/1.4 system-ui, sans-serif;
+  padding: 10px 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 35%);
+  white-space: nowrap;
+}
+.fillai-stale-banner a { color: #60a5fa; text-decoration: underline; }
+
+.fillai-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2147483646;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 16px 9px 10px;
+  background: #0c4a8a;
+  color: #fff;
+  box-shadow: 0 4px 20px rgb(12 74 138 / 35%);
+  font: 600 13px/1 system-ui, sans-serif;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.fillai-fab:hover {
+  background: #0a3d73;
+  box-shadow: 0 6px 24px rgb(12 74 138 / 42%);
+}
+
+/* ── Panel shell ─────────────────────────────────────────────────────── */
+
+.fillai-panel {
+  position: fixed;
+  right: 18px;
+  bottom: 78px;
+  z-index: 2147483646;
+  width: min(520px, calc(100vw - 36px));
+  max-height: min(780px, calc(100vh - 108px));
+  overflow: auto;
+  border: 1px solid #d0d9e4;
+  border-radius: 12px;
+  background: #fff;
+  color: #111827;
+  box-shadow: 0 20px 64px rgb(15 30 50 / 20%), 0 2px 8px rgb(15 30 50 / 08%);
+  font: 14px/1.5 system-ui, sans-serif;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────── */
+
+.fillai-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e8edf3;
+  background: #f8fafc;
+  border-radius: 12px 12px 0 0;
+}
+
+.fillai-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fillai-logo-mark {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px rgb(12 74 138 / 22%);
+}
+
+.fillai-logo-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fillai-fab .fillai-logo-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 16%);
+}
+
+.fillai-panel h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0c4a8a;
+  letter-spacing: -0.01em;
+}
+
+.fillai-badge-local {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  border-radius: 999px;
+  color: #15803d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.fillai-badge-local svg {
+  width: 10px;
+  height: 10px;
+}
+
+/* ── Section & grid ──────────────────────────────────────────────────── */
+
+.fillai-panel section {
+  padding: 14px;
+}
+
+.fillai-panel footer {
+  padding: 10px 14px;
+}
+
+.fillai-grid {
+  display: grid;
+  gap: 10px;
+}
+
+/* ── Label hint ──────────────────────────────────────────────────────── */
+
+.fillai-label-hint {
+  display: block;
+  margin-bottom: 6px;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ── Inputs & textarea ───────────────────────────────────────────────── */
+
+.fillai-panel textarea,
+.fillai-panel input[type="text"],
+.fillai-panel input:not([type]),
+.fillai-panel input[type="email"],
+.fillai-panel input[type="tel"] {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  padding: 9px 11px;
+  font: inherit;
+  color: #111827;
+  background: #fff;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.fillai-panel textarea:focus,
+.fillai-panel input:focus {
+  outline: none;
+  border-color: #0c4a8a;
+  box-shadow: 0 0 0 3px rgb(12 74 138 / 12%);
+}
+
+.fillai-panel textarea {
+  min-height: 108px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+/* ── Privacy strip ───────────────────────────────────────────────────── */
+
+.fillai-privacy-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 7px;
+  color: #0369a1;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+
+.fillai-field-pill {
+  margin-left: auto;
+  background: #0369a1;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fillai-privacy-strip svg {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+}
+
+/* ── Actions footer ──────────────────────────────────────────────────── */
+
+.fillai-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e8edf3;
+  background: #f8fafc;
+  border-radius: 0 0 12px 12px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+
+.fillai-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  padding: 8px 12px;
+  background: #fff;
+  color: #374151;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s, box-shadow 0.12s;
+}
+
+.fillai-button:hover {
+  border-color: #0c4a8a;
+  color: #0c4a8a;
+  background: #f0f7ff;
+}
+
+.fillai-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  padding: 0;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.fillai-icon-button:hover {
+  border-color: #0c4a8a;
+  color: #0c4a8a;
+  background: #f0f7ff;
+}
+
+.fillai-button svg,
+.fillai-icon-button svg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.fillai-button.primary {
+  border-color: #0c4a8a;
+  background: #0c4a8a;
+  color: #fff;
+  box-shadow: 0 2px 8px rgb(12 74 138 / 22%);
+}
+
+.fillai-button.primary:hover {
+  background: #0a3d73;
+  border-color: #0a3d73;
+  color: #fff;
+  box-shadow: 0 3px 12px rgb(12 74 138 / 30%);
+}
+
+.fillai-icon-button.active {
+  border-color: #9f1d35;
+  background: #9f1d35;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgb(159 29 53 / 14%);
+}
+
+@keyframes fillai-mic-pulse {
+  0%   { box-shadow: 0 0 0 3px rgb(159 29 53 / 32%); }
+  60%  { box-shadow: 0 0 0 9px rgb(159 29 53 / 0%); }
+  100% { box-shadow: 0 0 0 3px rgb(159 29 53 / 0%); }
+}
+
+.fillai-icon-button.active.fillai-listening {
+  animation: fillai-mic-pulse 1.4s ease-out infinite;
+}
+
+.fillai-button:disabled,
+.fillai-icon-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Toolstrip ───────────────────────────────────────────────────────── */
+
+.fillai-header-actions,
+.fillai-toolstrip {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ── Status text ─────────────────────────────────────────────────────── */
+
+.fillai-status-text,
+.fillai-muted {
+  color: #6b7280;
+  font-size: 11.5px;
+  margin: 0;
+}
+
+/* ── Settings panel ──────────────────────────────────────────────────── */
+
+.fillai-settings {
+  display: grid;
+  gap: 14px;
+  padding: 12px;
+  border: 1.5px solid #e8edf3;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.fillai-settings[hidden] {
+  display: none;
+}
+
+.fillai-settings-section {
+  display: grid;
+  gap: 8px;
+}
+
+.fillai-settings-heading {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.fillai-settings-hint {
+  margin: 0;
+  color: #6b7280;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.fillai-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.fillai-donate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #e2e8ef;
+  padding-top: 10px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.fillai-donate a {
+  color: #123c69;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.fillai-donate a:hover {
+  text-decoration: underline;
+}
+
+/* ── Custom fields ───────────────────────────────────────────────────── */
+
+.fillai-cf-count {
+  font-weight: 400;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.fillai-cf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.fillai-cf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 28px;
+  gap: 6px;
+  align-items: center;
+}
+
+.fillai-cf-remove {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.fillai-cf-remove:hover { color: #ef4444; }
+
+.fillai-cf-add {
+  background: none;
+  border: 1px dashed #cbd5e1;
+  border-radius: 6px;
+  color: #0c4a8a;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, border-color 0.15s;
+}
+.fillai-cf-add:hover:not(:disabled) {
+  background: #eff6ff;
+  border-color: #0c4a8a;
+}
+.fillai-cf-add:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ── Advanced details ────────────────────────────────────────────────── */
+
+.fillai-advanced {
+  display: grid;
+  gap: 12px;
+}
+
+.fillai-advanced summary {
+  width: fit-content;
+  color: #4b5563;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.fillai-advanced summary:hover {
+  color: #0c4a8a;
+}
+
+.fillai-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.fillai-check input {
+  width: 15px;
+  height: 15px;
+  accent-color: #0c4a8a;
+}
+
+/* ── Model cards ─────────────────────────────────────────────────────── */
+
+.fillai-model-grid {
+  display: grid;
+  gap: 6px;
+}
+
+.fillai-model-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.fillai-model-card:hover {
+  border-color: #93b8dc;
+  background: #f8fafc;
+}
+
+.fillai-model-card:has(input:checked) {
+  border-color: #0c4a8a;
+  background: #eff6ff;
+}
+
+.fillai-model-card input[type="radio"] {
+  flex: 0 0 15px;
+  width: 15px;
+  height: 15px;
+  accent-color: #0c4a8a;
+  cursor: pointer;
+}
+
+.fillai-model-card-body {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fillai-model-tier {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.fillai-model-card:has(input:checked) .fillai-model-tier {
+  color: #0c4a8a;
+}
+
+.fillai-model-desc {
+  font-size: 11px;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Draft review rows ───────────────────────────────────────────────── */
+
+.fillai-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.9fr) minmax(160px, 1.4fr);
+  gap: 10px;
+  align-items: center;
+  padding: 3px 0;
+}
+
+.fillai-row strong {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  color: #374151;
+}
+
+.fillai-confidence-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 999px;
+  background: #d1d5db;
+}
+
+.confidence-high .fillai-confidence-dot  { background: #16a34a; }
+.confidence-medium .fillai-confidence-dot { background: #d97706; }
+.confidence-low .fillai-confidence-dot    { background: #dc2626; }
+
+/* ── Recording strip (replaces toolstrip when mic is active) ─────────── */
+
+.fillai-recording-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  padding: 8px 12px;
+  background: rgb(159 29 53 / 7%);
+  border: 1.5px solid rgb(159 29 53 / 22%);
+  border-radius: 8px;
+}
+
+.fillai-rec-dot {
+  flex: 0 0 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b0b0b0;
+}
+
+.fillai-rec-dot.active {
+  background: #dc2626;
+  animation: fillai-rec-blink 1s ease-in-out infinite;
+}
+
+@keyframes fillai-rec-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+.fillai-rec-label {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9f1d35;
+}
+
+.fillai-stop-btn {
+  flex: 0 0 auto;
+  border: 1.5px solid #9f1d35;
+  border-radius: 6px;
+  padding: 5px 11px;
+  background: transparent;
+  color: #9f1d35;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.12s, color 0.12s;
+}
+
+.fillai-stop-btn:hover {
+  background: #9f1d35;
+  color: #fff;
+}
+
+/* ── Preview field rings (applied directly to page form elements) ─────── */
+
+.fillai-preview-field {
+  /* Use outline so layout is never affected */
+  outline-offset: 3px !important;
+}
+
+.fillai-ring-high {
+  outline: 2.5px solid #16a34a !important;
+}
+
+.fillai-ring-medium {
+  outline: 2.5px solid #d97706 !important;
+}
+
+.fillai-ring-low {
+  outline: 2.5px solid #dc2626 !important;
+  animation: fillai-ring-pulse 2s ease-in-out infinite !important;
+}
+
+@keyframes fillai-ring-pulse {
+  0%, 100% { outline-color: #dc2626; }
+  50%       { outline-color: #fca5a5; }
+}
+
+/* ── Approval bar ────────────────────────────────────────────────────── */
+
+.fillai-approval-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  height: 60px;
+  background: #0c1a2e;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  box-shadow: 0 -6px 28px rgb(0 0 0 / 35%);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.fillai-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  color: rgb(255 255 255 / 55%);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fillai-bar-brand svg {
+  color: #4ade80;
+  width: 13px;
+  height: 13px;
+}
+
+.fillai-bar-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.fillai-bar-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgb(255 255 255 / 85%);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.fillai-bar-sep {
+  color: rgb(255 255 255 / 30%);
+}
+
+.fillai-bar-ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.fillai-bar-ok svg { width: 14px; height: 14px; }
+
+.fillai-bar-attention {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.fillai-bar-attention svg { width: 13px; height: 13px; }
+
+.fillai-bar-note {
+  color: rgb(255 255 255 / 38%);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fillai-bar-actions {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.fillai-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  transition: background 0.13s, transform 0.1s, box-shadow 0.13s;
+  font-family: inherit;
+}
+
+.fillai-bar-btn svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.fillai-bar-ghost {
+  background: rgb(255 255 255 / 10%);
+  color: rgb(255 255 255 / 75%);
+  border: 1.5px solid rgb(255 255 255 / 14%);
+}
+
+.fillai-bar-ghost:hover {
+  background: rgb(255 255 255 / 16%);
+  color: #fff;
+}
+
+.fillai-bar-approve {
+  background: #16a34a;
+  color: #fff;
+  box-shadow: 0 2px 12px rgb(22 163 74 / 40%);
+  letter-spacing: 0.01em;
+}
+
+.fillai-bar-approve:hover {
+  background: #15803d;
+  box-shadow: 0 4px 16px rgb(22 163 74 / 55%);
+  transform: translateY(-1px);
+}
+
+.fillai-bar-approve:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgb(22 163 74 / 40%);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+
+@media (max-width: 520px) {
+  .fillai-row            { grid-template-columns: 1fr; }
+  .fillai-profile-grid   { grid-template-columns: 1fr; }
+  .fillai-actions        { align-items: stretch; }
+  .fillai-model-desc     { white-space: normal; }
+}

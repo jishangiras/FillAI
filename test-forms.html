@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FillAI — Comprehensive Form Test Suite</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #f0f2f5;
+        color: #14212b;
+        font: 15px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      header {
+        background: #123c69;
+        color: #fff;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      header h1 { margin: 0; font-size: 18px; font-weight: 700; }
+      header p { margin: 0; font-size: 13px; opacity: .75; }
+      nav {
+        background: #fff;
+        border-bottom: 2px solid #dde2e8;
+        display: flex;
+        overflow-x: auto;
+        padding: 0 24px;
+        gap: 0;
+      }
+      nav button {
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
+        padding: 14px 18px;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        color: #5a6b7a;
+        white-space: nowrap;
+        transition: color .15s, border-color .15s;
+      }
+      nav button:hover { color: #123c69; }
+      nav button.active { color: #123c69; border-bottom-color: #123c69; }
+      main { max-width: 860px; margin: 32px auto; padding: 0 20px 60px; }
+      section { display: none; }
+      section.active { display: block; }
+      .card {
+        background: #fff;
+        border: 1px solid #dde2e8;
+        border-radius: 10px;
+        padding: 28px;
+        margin-bottom: 24px;
+      }
+      .card h2 { margin: 0 0 4px; font-size: 17px; }
+      .card p.desc { margin: 0 0 22px; color: #5a6b7a; font-size: 13px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+      .span2 { grid-column: span 2; }
+      .span3 { grid-column: span 3; }
+      label { display: grid; gap: 5px; font-size: 13px; font-weight: 600; color: #2a3a4a; }
+      input, select, textarea {
+        border: 1px solid #c8d0da;
+        border-radius: 6px;
+        padding: 9px 11px;
+        font: inherit;
+        font-size: 14px;
+        width: 100%;
+        background: #fafbfc;
+        transition: border-color .15s;
+      }
+      input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #2e7df4;
+        background: #fff;
+      }
+      .row { display: grid; gap: 14px; margin-top: 14px; }
+      .hint { font-size: 11px; color: #8a9aaa; font-weight: 400; margin-top: 2px; }
+      .submit-btn {
+        margin-top: 20px;
+        background: #123c69;
+        color: #fff;
+        border: none;
+        border-radius: 7px;
+        padding: 11px 22px;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .tag { display: inline-block; background: #e8f0fe; color: #2e5fb5; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 7px; margin-left: 8px; vertical-align: middle; }
+      .tag.green { background: #e6f5ec; color: #1e7e3c; }
+      .tag.amber { background: #fff3e0; color: #b45a00; }
+      .separator { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+      fieldset { border: 1px solid #dde2e8; border-radius: 7px; padding: 16px 18px; margin: 0; }
+      legend { font-size: 13px; font-weight: 700; color: #2a3a4a; padding: 0 6px; }
+      .radio-group { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 6px; }
+      .radio-group label { flex-direction: row; align-items: center; gap: 6px; font-weight: 400; cursor: pointer; }
+      .radio-group input[type=radio] { width: auto; }
+      .checkbox-label { display: flex; align-items: flex-start; gap: 8px; font-weight: 400; cursor: pointer; }
+      .checkbox-label input[type=checkbox] { width: auto; margin-top: 2px; }
+      @media (max-width: 600px) {
+        .grid, .grid-3 { grid-template-columns: 1fr; }
+        .span2, .span3 { grid-column: span 1; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <div>
+        <h1>FillAI — Form Test Suite</h1>
+        <p>Click the FillAI button in the corner, paste sample text, and hit "Fill Form with AI" to test each form type.</p>
+      </div>
+    </header>
+
+    <nav id="nav">
+      <button class="active" data-tab="basic">Basic Contact</button>
+      <button data-tab="emr">EMR / Patient Intake</button>
+      <button data-tab="insurance">Insurance</button>
+      <button data-tab="job">Job Application</button>
+      <button data-tab="checkout">E-Commerce</button>
+      <button data-tab="govt">Government / ID</button>
+      <button data-tab="finance">Financial / Banking</button>
+      <button data-tab="noautocomplete">No-Autocomplete</button>
+    </nav>
+
+    <main>
+
+      <!-- ── BASIC CONTACT ── -->
+      <section id="basic" class="active">
+        <div class="card">
+          <h2>Basic Contact / Profile <span class="tag green">autocomplete attrs</span></h2>
+          <p class="desc">Standard form with proper HTML autocomplete attributes. Tests the AUTOCOMPLETE_MAP priority path.</p>
+          <form>
+            <div class="grid">
+              <label>First name <input name="firstName" autocomplete="given-name" placeholder="Jane" /></label>
+              <label>Last name <input name="lastName" autocomplete="family-name" placeholder="Smith" /></label>
+              <label>Middle name <input name="middleName" autocomplete="additional-name" /></label>
+              <label>Email <input type="email" name="email" autocomplete="email" /></label>
+              <label>Phone <input type="tel" name="phone" autocomplete="tel" /></label>
+              <label>Company <input name="company" autocomplete="organization" /></label>
+              <label>Street address <input name="address" autocomplete="street-address" /></label>
+              <label>City <input name="city" autocomplete="address-level2" /></label>
+              <label>Province / State <input name="province" autocomplete="address-level1" /></label>
+              <label>Postal / ZIP <input name="postalCode" autocomplete="postal-code" /></label>
+              <label>
+                Country
+                <select name="country" autocomplete="country-name">
+                  <option value="">Select…</option>
+                  <option>Canada</option>
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                  <option>Australia</option>
+                  <option>Germany</option>
+                </select>
+              </label>
+              <label>Date of birth <input type="date" name="dob" autocomplete="bday" /></label>
+            </div>
+            <div class="row">
+              <label>Notes <textarea name="notes" rows="3"></textarea></label>
+            </div>
+            <button type="button" class="submit-btn">Submit</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Sample test input</h2>
+          <p class="desc">Copy this into the FillAI panel to test the basic form above.</p>
+          <textarea rows="5" readonly style="font-size:13px;background:#f7f8fa;">My name is Jane Marie Smith. I was born on March 15, 1990. Email: jane.smith@example.com, phone 416-555-0192. I live at 88 Maple Avenue, Toronto, Ontario, M5V 2H1, Canada. I work at Acme Corp as a software engineer.</textarea>
+        </div>
+      </section>
+
+      <!-- ── EMR / PATIENT INTAKE ── -->
+      <section id="emr">
+        <div class="card">
+          <h2>EMR — Patient Intake <span class="tag amber">label-only fields</span></h2>
+          <p class="desc">Simulates an Electronic Medical Records patient registration form. Most fields use label text only (no autocomplete), like real EMR systems (Epic, Cerner, Jane App).</p>
+          <form>
+            <fieldset>
+              <legend>Personal Information</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Legal First Name <input name="legalFirst" /></label>
+                <label>Legal Last Name <input name="legalLast" /></label>
+                <label>Preferred Name <input name="preferredName" /></label>
+                <label>Date of Birth <input type="date" name="dateOfBirth" /></label>
+                <label>
+                  Biological Sex
+                  <select name="biologicalSex">
+                    <option value="">Select…</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Intersex</option>
+                    <option>Unknown</option>
+                  </select>
+                </label>
+                <label>
+                  Gender Identity
+                  <select name="genderIdentity">
+                    <option value="">Select…</option>
+                    <option>Man</option>
+                    <option>Woman</option>
+                    <option>Non-binary</option>
+                    <option>Prefer not to say</option>
+                  </select>
+                </label>
+                <label>Health Card Number <input name="healthCardNumber" /></label>
+                <label>Health Card Version <input name="healthCardVersion" maxlength="2" /></label>
+                <label>Health Card Province <input name="healthCardProvince" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Contact</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Home Phone <input type="tel" name="homePhone" /></label>
+                <label>Cell Phone <input type="tel" name="cellPhone" /></label>
+                <label>Email Address <input type="email" name="patientEmail" /></label>
+                <label>Street Address <input name="streetAddress" /></label>
+                <label>City <input name="patientCity" /></label>
+                <label>Province <input name="patientProvince" /></label>
+                <label>Postal Code <input name="patientPostal" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Emergency Contact</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Emergency Contact Name <input name="emergencyContactName" /></label>
+                <label>Relationship <input name="emergencyRelationship" /></label>
+                <label>Emergency Phone <input type="tel" name="emergencyPhone" /></label>
+                <label>Emergency Email <input type="email" name="emergencyEmail" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Medical History</legend>
+              <div class="row">
+                <label>Known Allergies
+                  <span class="hint">List all known allergies (medications, food, environmental)</span>
+                  <textarea name="knownAllergies" rows="3"></textarea>
+                </label>
+                <label>Current Medications
+                  <span class="hint">Include dose and frequency</span>
+                  <textarea name="currentMedications" rows="3"></textarea>
+                </label>
+                <label>Previous Surgeries / Procedures <textarea name="surgeries" rows="2"></textarea></label>
+                <label>Chronic Conditions <textarea name="chronicConditions" rows="2"></textarea></label>
+                <label>Family Medical History <textarea name="familyHistory" rows="2"></textarea></label>
+                <label>Reason for Visit / Chief Complaint <textarea name="chiefComplaint" rows="2"></textarea></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Insurance / Coverage</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Insurance Provider <input name="insuranceProvider" /></label>
+                <label>Policy Number <input name="policyNumber" /></label>
+                <label>Group Number <input name="groupNumber" /></label>
+                <label>Policyholder Name <input name="policyholderName" /></label>
+                <label>Policyholder DOB <input type="date" name="policyholderDob" /></label>
+                <label>
+                  Relationship to Policyholder
+                  <select name="policyholderRelationship">
+                    <option value="">Select…</option>
+                    <option>Self</option>
+                    <option>Spouse</option>
+                    <option>Child</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <button type="button" class="submit-btn">Register Patient</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Sample test input — Patient Intake</h2>
+          <textarea rows="8" readonly style="font-size:13px;background:#f7f8fa;">Patient: Robert James Nguyen, born January 8, 1978. Male. Health card: 1234-567-890-AB (Ontario). Cell: 647-555-0188. Email: r.nguyen@email.com. Address: 45 Wellington St, Ottawa, ON, K1A 0A9.
+
+Allergies: penicillin (rash), shellfish, latex.
+Medications: metformin 500mg twice daily, lisinopril 10mg once daily, aspirin 81mg daily.
+Chronic conditions: Type 2 diabetes, hypertension.
+Reason for visit: annual physical and medication review.
+
+Insurance: Sun Life Financial, policy 8841029-A, group 77342. Self.
+
+Emergency contact: Maria Nguyen (spouse), 647-555-0199.</textarea>
+        </div>
+      </section>
+
+      <!-- ── INSURANCE ── -->
+      <section id="insurance">
+        <div class="card">
+          <h2>Insurance Claim / Enrollment <span class="tag amber">label-only fields</span></h2>
+          <p class="desc">Simulates a health or auto insurance enrollment / claim form.</p>
+          <form>
+            <fieldset>
+              <legend>Applicant</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>First Name <input name="applicantFirst" /></label>
+                <label>Last Name <input name="applicantLast" /></label>
+                <label>Date of Birth <input type="date" name="applicantDob" /></label>
+                <label>
+                  Gender
+                  <select name="applicantGender">
+                    <option value="">Select…</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Non-binary</option>
+                  </select>
+                </label>
+                <label>Social Insurance Number / SSN <input name="sin" /></label>
+                <label>Driver's Licence Number <input name="driversLicence" /></label>
+                <label>Occupation <input name="occupation" /></label>
+                <label>Employer <input name="employer" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Contact & Address</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Email <input type="email" name="claimEmail" /></label>
+                <label>Phone <input type="tel" name="claimPhone" /></label>
+                <label>Mailing Address <input name="mailingAddress" /></label>
+                <label>City <input name="mailingCity" /></label>
+                <label>Province / State <input name="mailingProvince" /></label>
+                <label>Postal Code <input name="mailingPostal" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Existing Coverage</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Current Insurance Provider <input name="currentInsurer" /></label>
+                <label>Policy Number <input name="existingPolicy" /></label>
+                <label>Coverage Type <input name="coverageType" /></label>
+                <label>Annual Premium <input name="annualPremium" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Beneficiary</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Beneficiary Full Name <input name="beneficiaryName" /></label>
+                <label>Relationship <input name="beneficiaryRelationship" /></label>
+                <label>Beneficiary DOB <input type="date" name="beneficiaryDob" /></label>
+                <label>Beneficiary Phone <input type="tel" name="beneficiaryPhone" /></label>
+              </div>
+            </fieldset>
+
+            <button type="button" class="submit-btn">Submit Application</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Sample test input — Insurance</h2>
+          <textarea rows="6" readonly style="font-size:13px;background:#f7f8fa;">Name: Sarah Elizabeth Chen, DOB: June 22, 1985. Female. SSN: 123-45-6789. Occupation: Registered Nurse at Toronto General Hospital. Email: s.chen@email.com, phone 416-555-0234. Address: 210 Bay St, Toronto, ON, M5J 2W7.
+
+Current insurance: Manulife, policy MAN-88123-C.
+Beneficiary: David Chen (spouse), DOB: March 10, 1983, phone 416-555-0235.</textarea>
+        </div>
+      </section>
+
+      <!-- ── JOB APPLICATION ── -->
+      <section id="job">
+        <div class="card">
+          <h2>Job Application / HR Onboarding <span class="tag amber">label-only fields</span></h2>
+          <p class="desc">Simulates ATS (Applicant Tracking System) or HR onboarding forms like Workday, Greenhouse, or Lever.</p>
+          <form>
+            <fieldset>
+              <legend>Personal Information</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>First Name <input name="appFirst" /></label>
+                <label>Last Name <input name="appLast" /></label>
+                <label>Email Address <input type="email" name="appEmail" /></label>
+                <label>Phone Number <input type="tel" name="appPhone" /></label>
+                <label>LinkedIn Profile URL <input name="linkedIn" /></label>
+                <label>Portfolio / Website <input name="portfolio" /></label>
+                <label>Current Address <input name="appAddress" /></label>
+                <label>City <input name="appCity" /></label>
+                <label>Province / State <input name="appProvince" /></label>
+                <label>Postal Code <input name="appPostal" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Work Authorization</legend>
+              <div class="radio-group" style="margin-top:8px">
+                <label><input type="radio" name="workAuth" value="citizen" /> Canadian Citizen</label>
+                <label><input type="radio" name="workAuth" value="pr" /> Permanent Resident</label>
+                <label><input type="radio" name="workAuth" value="work-permit" /> Open Work Permit</label>
+                <label><input type="radio" name="workAuth" value="other" /> Other</label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Current Position</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Current Job Title <input name="currentTitle" /></label>
+                <label>Current Employer <input name="currentEmployer" /></label>
+                <label>Years of Experience <input type="number" name="yearsExp" min="0" max="50" /></label>
+                <label>Desired Salary <input name="desiredSalary" /></label>
+                <label>Available Start Date <input type="date" name="startDate" /></label>
+                <label>
+                  Employment Type Preference
+                  <select name="empType">
+                    <option value="">Select…</option>
+                    <option>Full-time</option>
+                    <option>Part-time</option>
+                    <option>Contract</option>
+                    <option>Remote</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Cover Letter / Additional Info</legend>
+              <div class="row">
+                <label>Why do you want to work here? <textarea name="coverLetter" rows="4"></textarea></label>
+                <label>Any additional information <textarea name="additionalInfo" rows="3"></textarea></label>
+              </div>
+            </fieldset>
+
+            <button type="button" class="submit-btn">Submit Application</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Sample test input — Job Application</h2>
+          <textarea rows="5" readonly style="font-size:13px;background:#f7f8fa;">Applicant: Marcus James Okonkwo. Email: m.okonkwo@email.com. Phone: 905-555-0312. Currently a Senior Product Manager at Shopify, 8 years experience. Based in Mississauga, ON, L5B 3C1, 320 Hurontario St. Looking for full-time roles, available from September 1. Desired salary: $140,000 CAD. LinkedIn: linkedin.com/in/marcusokonkwo.</textarea>
+        </div>
+      </section>
+
+      <!-- ── E-COMMERCE ── -->
+      <section id="checkout">
+        <div class="card">
+          <h2>E-Commerce Checkout <span class="tag green">autocomplete attrs</span></h2>
+          <p class="desc">Simulates Shopify / WooCommerce style checkout. Uses standard autocomplete tokens.</p>
+          <form>
+            <fieldset>
+              <legend>Contact</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Email <input type="email" name="email" autocomplete="email" /></label>
+                <label>Phone <input type="tel" name="phone" autocomplete="tel" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Shipping Address</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>First Name <input name="shippingFirst" autocomplete="shipping given-name" /></label>
+                <label>Last Name <input name="shippingLast" autocomplete="shipping family-name" /></label>
+                <label class="span2">Street Address <input name="shippingAddress" autocomplete="shipping street-address" /></label>
+                <label>Apt / Suite <input name="shippingApt" /></label>
+                <label>City <input name="shippingCity" autocomplete="shipping address-level2" /></label>
+                <label>Province / State <input name="shippingProvince" autocomplete="shipping address-level1" /></label>
+                <label>Postal / ZIP Code <input name="shippingPostal" autocomplete="shipping postal-code" /></label>
+                <label>
+                  Country
+                  <select name="shippingCountry" autocomplete="shipping country-name">
+                    <option value="">Select…</option>
+                    <option>Canada</option>
+                    <option>United States</option>
+                    <option>United Kingdom</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Payment</legend>
+              <div class="grid" style="margin-top:12px">
+                <label class="span2">Cardholder Name <input name="cardName" autocomplete="cc-name" /></label>
+                <label class="span2">Card Number <input name="cardNumber" autocomplete="cc-number" maxlength="19" placeholder="•••• •••• •••• ••••" /></label>
+                <label>Expiry (MM/YY) <input name="cardExpiry" autocomplete="cc-exp" maxlength="5" placeholder="MM/YY" /></label>
+                <label>CVV <input name="cardCvv" autocomplete="cc-csc" maxlength="4" placeholder="•••" /></label>
+              </div>
+            </fieldset>
+
+            <button type="button" class="submit-btn">Place Order</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Sample test input — Checkout</h2>
+          <textarea rows="4" readonly style="font-size:13px;background:#f7f8fa;">Ship to: Priya Sharma, 540 King St W, Suite 301, Toronto, ON, M5V 1L4, Canada. Email: priya.s@email.com, phone 647-555-0401. Payment: Visa 4111 1111 1111 1111, exp 09/27, CVV 123, name on card Priya Sharma.</textarea>
+        </div>
+      </section>
+
+      <!-- ── GOVERNMENT / ID ── -->
+      <section id="govt">
+        <div class="card">
+          <h2>Government / Identification Form <span class="tag amber">label-only fields</span></h2>
+          <p class="desc">Simulates service.canada.ca, CRA, or DMV style forms. Heavy on identity fields, no autocomplete tokens.</p>
+          <form>
+            <fieldset>
+              <legend>Identity</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Given Name(s) <input name="givenNames" /></label>
+                <label>Surname / Family Name <input name="surname" /></label>
+                <label>Date of Birth <input type="date" name="govDob" /></label>
+                <label>Place of Birth (City) <input name="birthCity" /></label>
+                <label>Province / Territory of Birth <input name="birthProvince" /></label>
+                <label>Country of Birth <input name="birthCountry" /></label>
+                <label>Citizenship <input name="citizenship" /></label>
+                <label>
+                  Marital Status
+                  <select name="maritalStatus">
+                    <option value="">Select…</option>
+                    <option>Single</option>
+                    <option>Married</option>
+                    <option>Common-law</option>
+                    <option>Divorced</option>
+                    <option>Widowed</option>
+                  </select>
+                </label>
+                <label>Social Insurance Number <input name="govSin" maxlength="11" placeholder="000-000-000" /></label>
+                <label>Passport Number <input name="passportNumber" /></label>
+                <label>Passport Expiry <input type="date" name="passportExpiry" /></label>
+                <label>Driver's Licence Number <input name="govLicence" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Current Residential Address</legend>
+              <div class="grid" style="margin-top:12px">
+                <label class="span2">Street Number and Name <input name="govStreet" /></label>
+                <label>Apt / Unit <input name="govUnit" /></label>
+                <label>City or Town <input name="govCity" /></label>
+                <label>Province / Territory <input name="govProvince" /></label>
+                <label>Postal Code <input name="govPostal" /></label>
+                <label>Country <input name="govCountry" /></label>
+                <label>How long at this address? <input name="residencyDuration" placeholder="e.g. 3 years" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Contact</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Daytime Phone <input type="tel" name="daytimePhone" /></label>
+                <label>Evening Phone <input type="tel" name="eveningPhone" /></label>
+                <label>Email Address <input type="email" name="govEmail" /></label>
+              </div>
+            </fieldset>
+
+            <button type="button" class="submit-btn">Submit</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Sample test input — Government</h2>
+          <textarea rows="5" readonly style="font-size:13px;background:#f7f8fa;">Full name: Thomas William Bergeron. Born April 3, 1972 in Quebec City, Quebec, Canada. Canadian citizen. SIN: 123-456-789. Passport: AB123456, expires June 2028. Currently married. Address: 88 Sparks St, Unit 4, Ottawa, ON, K1P 5B5, Canada. Daytime phone: 613-555-0100. Email: t.bergeron@email.com.</textarea>
+        </div>
+      </section>
+
+      <!-- ── FINANCIAL ── -->
+      <section id="finance">
+        <div class="card">
+          <h2>Financial / Banking Application <span class="tag amber">label-only fields</span></h2>
+          <p class="desc">Simulates online banking registration, loan application, or brokerage account opening.</p>
+          <form>
+            <fieldset>
+              <legend>Personal Details</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Legal First Name <input name="bankFirst" /></label>
+                <label>Legal Last Name <input name="bankLast" /></label>
+                <label>Date of Birth <input type="date" name="bankDob" /></label>
+                <label>
+                  Gender
+                  <select name="bankGender">
+                    <option value="">Select…</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Non-binary</option>
+                    <option>Prefer not to say</option>
+                  </select>
+                </label>
+                <label>Social Insurance Number <input name="bankSin" /></label>
+                <label>Occupation / Job Title <input name="bankOccupation" /></label>
+                <label>Employer Name <input name="bankEmployer" /></label>
+                <label>Annual Income <input name="annualIncome" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Contact & Address</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>Email <input type="email" name="bankEmail" /></label>
+                <label>Mobile Phone <input type="tel" name="bankPhone" /></label>
+                <label>Home Address <input name="bankAddress" /></label>
+                <label>City <input name="bankCity" /></label>
+                <label>Province <input name="bankProvince" /></label>
+                <label>Postal Code <input name="bankPostal" /></label>
+              </div>
+            </fieldset>
+
+            <hr class="separator" />
+
+            <fieldset>
+              <legend>Account Preferences</legend>
+              <div class="grid" style="margin-top:12px">
+                <label>
+                  Account Type
+                  <select name="accountType">
+                    <option value="">Select…</option>
+                    <option>Chequing</option>
+                    <option>Savings</option>
+                    <option>TFSA</option>
+                    <option>RRSP</option>
+                    <option>FHSA</option>
+                  </select>
+                </label>
+                <label>
+                  Currency
+                  <select name="currency">
+                    <option value="">Select…</option>
+                    <option>CAD</option>
+                    <option>USD</option>
+                  </select>
+                </label>
+                <label class="span2">Purpose of Account <textarea name="accountPurpose" rows="2"></textarea></label>
+              </div>
+            </fieldset>
+
+            <button type="button" class="submit-btn">Open Account</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Sample test input — Banking</h2>
+          <textarea rows="5" readonly style="font-size:13px;background:#f7f8fa;">Name: Aisha Kamara. DOB: September 14, 1991. Female. SIN: 987-654-321. Financial analyst at CIBC, annual income approx $95,000. Email: aisha.kamara@email.com, mobile 416-555-0788. Address: 1 Yonge St, Toronto, ON, M5E 1W7. Looking to open a TFSA in CAD.</textarea>
+        </div>
+      </section>
+
+      <!-- ── NO AUTOCOMPLETE ── -->
+      <section id="noautocomplete">
+        <div class="card">
+          <h2>No-Autocomplete / Legacy Forms <span class="tag">label heuristic only</span></h2>
+          <p class="desc">Deliberately omits all autocomplete attributes and uses varied label phrasing. Tests pure keyword/regex matching — the hardest case for the heuristic engine.</p>
+          <form autocomplete="off">
+            <div class="grid">
+              <label>Your first name <input name="f1" autocomplete="off" /></label>
+              <label>Surname <input name="f2" autocomplete="off" /></label>
+              <label>E-mail address <input name="f3" autocomplete="off" /></label>
+              <label>Mobile number <input name="f4" autocomplete="off" /></label>
+              <label>Home address line 1 <input name="f5" autocomplete="off" /></label>
+              <label>Town / City <input name="f6" autocomplete="off" /></label>
+              <label>State or Province <input name="f7" autocomplete="off" /></label>
+              <label>ZIP / Postal <input name="f8" autocomplete="off" /></label>
+              <label>Organisation <input name="f9" autocomplete="off" /></label>
+              <label>Birthday (YYYY-MM-DD) <input name="f10" autocomplete="off" /></label>
+              <label>Sex <select name="f11" autocomplete="off"><option value="">—</option><option>Male</option><option>Female</option><option>Other</option></select></label>
+              <label>Job title / Role <input name="f12" autocomplete="off" /></label>
+              <label>Allergies / Intolerances <input name="f13" autocomplete="off" /></label>
+              <label>Current medications <input name="f14" autocomplete="off" /></label>
+              <label>Insurance company <input name="f15" autocomplete="off" /></label>
+              <label>Policy no. <input name="f16" autocomplete="off" /></label>
+              <label>Next of kin name <input name="f17" autocomplete="off" /></label>
+              <label>Next of kin phone <input name="f18" autocomplete="off" /></label>
+            </div>
+            <button type="button" class="submit-btn">Submit</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Sample test input — No-Autocomplete</h2>
+          <textarea rows="7" readonly style="font-size:13px;background:#f7f8fa;">First name: Fatima. Surname: Al-Rashid. Born 1995-07-30. Female. Email: fatima.alrashid@email.com. Mobile: 780-555-0067. Address: 1200 Jasper Ave, Edmonton, AB, T5J 1V1. Occupation: Pharmacist at Shoppers Drug Mart.
+
+Allergies: sulfonamides, tree nuts.
+Medications: sertraline 50mg daily, vitamin D3 2000 IU.
+Insurance: Alberta Blue Cross, policy ABC-994421.
+Emergency contact: Yusuf Al-Rashid, phone 780-555-0068.</textarea>
+        </div>
+      </section>
+
+    </main>
+
+    <script>
+      const tabs = document.querySelectorAll('nav button');
+      const sections = document.querySelectorAll('main section');
+      tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.tab;
+          tabs.forEach(b => b.classList.toggle('active', b === btn));
+          sections.forEach(s => s.classList.toggle('active', s.id === id));
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">FillAI logo</title>
+  <desc id="desc">A blue rounded square with a form line, check mark, and AI sparkle.</desc>
+  <defs>
+    <linearGradient id="bg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0C4A8A"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="36" y1="36" x2="104" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7DD3FC"/>
+      <stop offset="1" stop-color="#A7F3D0"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <path d="M34 38h42c9 0 16 7 16 16v4H34V38Z" fill="#FFFFFF"/>
+  <path d="M34 68h46c8 0 15 6 16 14H34V68Z" fill="#E0F2FE"/>
+  <path d="M34 92h28c8 0 14 6 14 14H34V92Z" fill="#FFFFFF"/>
+  <path d="m79 86 10 10 23-28" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M92 25 96 36l11 4-11 4-4 11-4-11-11-4 11-4 4-11Z" fill="#A7F3D0"/>
+</svg>

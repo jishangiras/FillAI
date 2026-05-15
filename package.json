@@ -1,0 +1,25 @@
+{
+  "name": "fillai-extension",
+  "version": "0.1.2",
+  "private": true,
+  "description": "FillAI local browser extension for privacy-preserving form filling.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run build:chrome && npm run build:firefox",
+    "build:chrome": "BROWSER=chrome vite build && node scripts/copy-manifest.mjs chrome",
+    "build:firefox": "BROWSER=firefox vite build --outDir dist/firefox && node scripts/copy-manifest.mjs firefox",
+    "typecheck": "tsc --noEmit",
+    "zip:chrome": "cd dist/chrome && zip -r ../fillai-chrome.zip .",
+    "zip:firefox": "cd dist/firefox && zip -r ../fillai-firefox.zip ."
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.5.2",
+    "@mlc-ai/web-llm": "^0.2.79"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  }
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FillAI Test Form</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f6f8fa;
+        color: #14212b;
+        font: 16px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 42px 18px;
+      }
+
+      form {
+        display: grid;
+        gap: 16px;
+        padding: 24px;
+        border: 1px solid #cfd7df;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      label {
+        display: grid;
+        gap: 6px;
+        font-weight: 650;
+      }
+
+      input,
+      select,
+      textarea {
+        border: 1px solid #b8c4cf;
+        border-radius: 6px;
+        padding: 10px;
+        font: inherit;
+      }
+
+      button {
+        width: fit-content;
+        border: 0;
+        border-radius: 6px;
+        padding: 10px 14px;
+        background: #123c69;
+        color: white;
+        font-weight: 700;
+      }
+
+      @media (max-width: 680px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>FillAI Test Form</h1>
+      <p>Use this page to test the extension without touching a real checkout or account form.</p>
+      <form>
+        <div class="grid">
+          <label>First name <input name="firstName" autocomplete="given-name" /></label>
+          <label>Last name <input name="lastName" autocomplete="family-name" /></label>
+          <label>Email <input type="email" name="email" autocomplete="email" /></label>
+          <label>Phone <input type="tel" name="phone" autocomplete="tel" /></label>
+          <label>Street address <input name="address" autocomplete="street-address" /></label>
+          <label>City <input name="city" autocomplete="address-level2" /></label>
+          <label>Province/State <input name="province" autocomplete="address-level1" /></label>
+          <label>Postal/ZIP code <input name="postalCode" autocomplete="postal-code" /></label>
+          <label>
+            Country
+            <select name="country" autocomplete="country-name">
+              <option value="">Select one</option>
+              <option>Canada</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+            </select>
+          </label>
+          <label>Company <input name="company" autocomplete="organization" /></label>
+        </div>
+        <label>Notes <textarea name="notes" rows="4"></textarea></label>
+        <button type="button">Fake Submit</button>
+      </form>
+    </main>
+  </body>
+</html>
