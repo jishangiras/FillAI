@@ -13,6 +13,12 @@ FillAI is a privacy-first browser extension that fills forms from pasted or spok
 - New FillAI branding and browser icons.
 - Optional donation link in settings.
 
+## Screenshots
+
+- Input panel: `public/screenshots/fillai-input.png`
+- Review panel: `public/screenshots/fillai-review.png`
+- Defaults/settings: `public/screenshots/fillai-settings.png`
+
 ## Assets
 
 - `fillai-chrome.zip`

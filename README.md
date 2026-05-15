@@ -16,6 +16,21 @@ Everything is designed around one idea: **your form data should stay on your dev
 - Uses an in-page panel. No confusing browser popup workflow.
 - Supports Chrome, Edge, Firefox, and Chromium-based browsers.
 
+
+## Screenshots
+
+### Write Or Speak Once
+
+![FillAI input panel](public/screenshots/fillai-input.png)
+
+### Review Before Fill
+
+![FillAI review panel](public/screenshots/fillai-review.png)
+
+### Local Defaults
+
+![FillAI settings panel](public/screenshots/fillai-settings.png)
+
 ## Privacy
 
 FillAI is local-first.
