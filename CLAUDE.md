@@ -1,3 +1,38 @@
+# FillAI — Full Project Context
+
+## What Is FillAI?
+FillAI is a Chrome/Firefox browser extension that fills web forms from pasted or spoken natural language. Users paste notes (or dictate) and FillAI maps them to the right form fields using on-device AI — no data leaves the browser, no account required.
+
+**Key value**: Works on any form on any website. Inference runs on-device via WebLLM (WebGPU), Transformers.js (WebAssembly), or a regex heuristic fallback. Fills fields with colour-coded confidence rings (green/amber/red) and an approval bar before committing.
+
+**Project path**: `/Users/jishangiras/Dropbox/Developer/Projects/FillAi`
+
+## Quick Start
+```bash
+npm install
+npm run build:chrome          # builds to dist/chrome/
+# Then: chrome://extensions → Load unpacked → dist/chrome/
+npm run build                 # builds both Chrome + Firefox
+```
+After every code change: rebuild → Reload extension tile in `chrome://extensions`.
+
+## Current State (May 2026)
+- Core form-fill pipeline: ✅ working
+- Voice input via Web Speech API: ✅ working
+- Custom fields (up to 30): ✅ working
+- Donation button in popup.html footer: ✅ `https://donate.stripe.com/9B65kD1fw7tA0WQarY2sM02`
+- WebLLM (WebGPU inference): ✅ works, ~800MB first-run model download
+- Firefox: ✅ separate manifest, no offscreen document
+- Stripe / payments: Stripe Payment Link only — no backend
+
+## Donations
+See `STRIPE.md` in this folder for full details.
+- **Link**: https://donate.stripe.com/9B65kD1fw7tA0WQarY2sM02
+- Embedded in `popup.html` (`.donate` section) and `src/content.ts` (`.fillai-donate`)
+- Stripe account: 1Labs (`acct_18hXnKE3FNscJyVT`)
+
+---
+
 # FillAI — AI Coding Context
 
 FillAI is a Chrome/Firefox Manifest V3 browser extension that fills web forms from pasted or spoken natural language. All inference runs entirely on-device; no data leaves the browser.
